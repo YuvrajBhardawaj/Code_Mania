@@ -10,13 +10,22 @@ from tkcode import CodeEditor
 class App(ctk.CTk):
     def __init__(self):
         super().__init__()
+        screen_width = self.winfo_screenwidth()
+        screen_height = self.winfo_screenheight()
 
-        self.geometry("400x300")
-        self.title("Main Window")
+        window_width = 400
+        window_height = 300
+        # Calculate position (centered)
+        x_position = (screen_width - window_width) // 2
+        y_position = (screen_height - window_height) // 2
+
+
+        self.geometry(f"{window_width}x{window_height}+{x_position}+{y_position}")
+        self.title("Code Mania")
 
         # Button to Open New Window
-        open_button = ctk.CTkButton(self, text="Open New Window", command=self.open_new_window)
-        open_button.pack(pady=20)
+        open_button = ctk.CTkButton(self, text="Take The Test", command=self.open_new_window)
+        open_button.pack(pady=100)
 
     def open_new_window(self):
         """Opens a new window and hides the main app window."""
